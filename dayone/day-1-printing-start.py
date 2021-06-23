@@ -1,4 +1,4 @@
-print("I love python")
+'''print("I love python")
 # just to print the sentence "I love python". These type double quoted rods called strings
 
 print("it is one")
@@ -12,4 +12,12 @@ print(("Hello "+ input("What is you age")))
 # input
 name = input("What is your name")
 length =len(name)
-print("length of the: " +name+" is: ",length) # when you wanyt to print integers just use comma for variable
+print("length of the: " +name+" is: ",length) '''# when you wanyt to print integers just use comma for variable
+# chanaging variable
+a = input("a: ")
+b = input("b: ")
+c=a
+a=b
+b=c
+print("a: ",a+" b: ",b)
+
