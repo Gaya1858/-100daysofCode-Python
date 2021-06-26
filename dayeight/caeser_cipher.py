@@ -22,23 +22,34 @@ def shift_alpha(shift,text):
 
 def encrypt_text(s_alpha,text):
     encrypt =""
-    for i in range(0,len(text)):
-        for j in range(0,26):
-            if(text[i] ==alphabet_list[j]):
-                encrypt += s_alpha[j]
+
+    for i in text:
+        if(i in alphabet_list):
+            x = alphabet_list.index(i)
+            encrypt += s_alpha[x]
+        else:
+            encrypt +=i
+
     print("Your encrypted text is: "+encrypt)
+
 
 def decrypt_text(s_alpha,text):
     decrypt =""
-    for i in range(0,len(text)):
-        for j in range(0,26):
-            if(text[i] ==s_alpha[j]):
-                decrypt +=alphabet_list[j]
+
+    for i in text:
+        if(i in s_alpha):
+            x = s_alpha.index(i)
+            decrypt += alphabet_list[x]
+        else:
+            decrypt+=i
+
     print("Your encrypted text is: "+decrypt)
 
 user_choice = input("Do you wnat to encrypt or decrypt your text: ").lower()
 user_text = input("Enter the text you wanted "+user_choice).lower()
 user_shift = int(input("Enter the shift number: "))
+user_shift =user_shift%26
+print(user_shift)
 
 alpha =shift_alpha(user_shift,user_text)
 if(user_choice == "encrypt"):
