@@ -26,12 +26,12 @@ def recursive_calc():
     should_continue = True
     while (should_continue):
 
-        num1 = int(input("Please enter a number: "))
+        num1 = float(input("Please enter a number: "))
         for i in operation.keys( ):
             print(i)
         sign = input("Please choose an operation: ")
 
-        num2 = int(input("Enter the second number: "))
+        num2 = float(input("Enter the second number: "))
         calculation = operation[sign]
         answer = calculation(num1, num2)
         print(f"{num1} {sign} {num2} = {answer}")
