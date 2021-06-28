@@ -46,17 +46,23 @@ def month_check(month,year):
     for i in range(0,len(days)):
         if (result):
             if (x == 1):
-                print("The days in the month of Feb are: ", 29, " and ", year, " is a leap year")
+               return("The days in the month of Feb are: ", 29, " and ", year, " is a leap year")
             else:
-                print("The days in the month are: ", days[i], " and ", year, " is a leap year")
+                if (x == i):
+                    return("The days in the month are: ", days[i], " and ", year, " is a leap year")
 
         else:
             if(x ==i):
-                print("The days in the month of Feb is: ", days[i], " and ", year, " is not a leap year")
+                return("The days in the month of Feb is: ", days[i], " and ", year, " is not a leap year")
 
 
 
 print("This program will return days in a month and whether it is a leap year or not!")
 year = int(input("Enter a year: "))
 month= int(input("Enter a month in numbers: "))
-month_check(month,year)
+print(month_check(month,year))
+
+'''
+Doc strings
+
+'''
