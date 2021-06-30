@@ -27,3 +27,7 @@ def player_hit():
     card_one = random.randint(0, len(jack_list))
     card1 = jack_list[card_one]
     return card1
+def system_hit():
+    card_one = random.randint(0, len(jack_list))
+    card1 = jack_list[card_one]
+    return card1
