@@ -27,15 +27,23 @@ def blackjack_play_one(blackJack_total_player,blackJack_total_computer):
         print("You lost!")
         return 2
     else:
-        return 3
+        player_decision = int(input("Choose 1 for stand,2 for hit and 3 for double: "))
+        if(player_decision ==1):
+            player_hit2 = player_hit()
+            blackJack_total_player += player_hit2
+            print(player_card, player_hit1, player_hit2,"\tTotal is: ", blackJack_total_player)
+            return hit2_player(blackJack_total_player)
+
+
 
 def blackJack_system(blackJack_total_player,blackJack_total_computer):
-    computer_card[2] =system_hit()
-    blackJack_total_computer += computer_card[2]
-    print(computer_card[0],computer_card[1],computer_card[2])
+    computer =system_hit()
+    blackJack_total_computer += computer
+    print(computer_card[0],computer_card[1],computer)
     if(blackJack_total_computer <blackJack_total_player ):
-        computer_card[3] =system_hit()
-        blackJack_total_computer+=computer_card[3]
+        computer2 =system_hit()
+        blackJack_total_computer+=computer2
+        print(computer_card[0], computer_card[1], computer,computer2)
         if(blackJack_total_computer>blackJack_total_player and blackJack_total_computer <=21):
             player_balance_subtract(user_bal, player_bet)
             print("You lost!")
@@ -44,6 +52,24 @@ def blackJack_system(blackJack_total_player,blackJack_total_computer):
             player_balance_add(user_bal, player_bet)
             print("You won!")
             return 1
+
+
+def hit2_player(blackJack_total_player):
+    if (blackJack_total_player > 21):
+        print("You lost!")
+        return 0
+    elif (blackJack_total_player == 21 and blackJack_total_computer != 21) or blackJack_total_computer > 21:
+        print("You won!")
+        return 1
+
+    elif blackJack_total_computer == 21 and blackJack_total_player != 21:
+        print("Computer: ", computer_card[0], computer_card[1])
+        print("computer won!")
+        print("You lost!")
+        return 2
+    else:
+        hit2_player(blackJack_total_player)
+
 
 
 
@@ -56,18 +82,20 @@ print("Player will be given 5000 initial coins to play")
 print("Lets begin!")
 user_bal = give_initial_coin( )
 print("Your balance is : ", user_bal)
-player_card = card_player( )
-print("\n\n\n\n\n")
-print("Your cards: ", player_card)
-blackJack_total_player = player_card[0] + player_card[1]
-print("your sum is: ", blackJack_total_player)
-computer_card = card_system( )
-print("Computer card 1: ", computer_card[0], "| |")
-blackJack_total_computer = computer_card[0] + computer_card[1]
-player_bet = int(input("Enter your bet amount: "))
-player_decision = int(input("Choose 1 for stand,2 for hit and 3 for double: "))
+print("*************************************************************************")
+
 continue_play = True
 while(continue_play):
+    player_card = card_player()
+    player_bet = int(input("Enter your bet amount: "))
+    print("Your cards: ", player_card)
+    blackJack_total_player = player_card[0] + player_card[1]
+    print("your sum is: ", blackJack_total_player)
+    computer_card = card_system()
+    print("Computer card 1: ", computer_card[0], "| |")
+    blackJack_total_computer = computer_card[0] + computer_card[1]
+
+    player_decision = int(input("Choose 1 for stand,2 for hit and 3 for double: "))
     if(player_decision ==1 and balance_check(user_bal,player_bet)):
         replay =blackjack_play_one(blackJack_total_player,blackJack_total_computer)
         if(replay ==0):
@@ -75,8 +103,7 @@ while(continue_play):
             user_bal =player_balance_subtract(user_bal,player_bet)
             if(play_re =='y'):
                 print("your balance is: ",user_bal)
-                player_bet = int(input("Enter your bet amount: "))
-                player_decision = int(input("Choose 1 for stand,2 for hit and 3 for double: "))
+
             else:
                 continue_play =False
         elif(replay ==1):
@@ -98,7 +125,7 @@ while(continue_play):
             else:
                 continue_play = False
         elif(replay ==3):
-            continue_play = True
+            player_decision = int(input("Choose 1 for stand,2 for hit and 3 for double: "))
 
     elif (player_decision ==2 and balance_check(user_bal,player_bet)):
         replay =blackJack_system(blackJack_total_player,blackJack_total_computer)
