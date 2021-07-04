@@ -94,6 +94,7 @@ def resource_report():
     print("Milk?: ",milk,"ml")
     print("Coffee Powder: ",coffee_powder,"g")
     print("Money: ",money,"$")
+    print("Machine: "+machine_status)
 
 
 def espresso(price):
@@ -154,8 +155,11 @@ if(resource_check(user_need)):
     if (total >=2.50):
         balance =return_amount(total)
         money-=balance
+        machine_status=machine_status_on( )
+        print("Machine: " + machine_status)
         if balance >0: print("Here is your balance: ",balance )
         if(user_need == "latte"):
+
             latte(total)
             print("Here is your Latte "u"\u2615")
         elif(user_need == "espresso"):
@@ -166,6 +170,7 @@ if(resource_check(user_need)):
             print("Here is your Cappuccino "u"\u2615")
         else:
             print("Please enter the correct choice: ")
+        machine_status=machine_status_off()
     else:
         print("You have to pay: ",return_amount(total))
 else:
