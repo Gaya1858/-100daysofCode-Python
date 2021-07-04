@@ -149,6 +149,7 @@ print("Gaya's Cofe! ")
 print("we serve: espresso/latte/cappuccino")
 print("Price is 2.50$")
 user_need = input("What would you like?(espresso/latte/cappuccino): ")
+
 if(resource_check(user_need)):
     total =user_pay()
     print()
@@ -174,10 +175,8 @@ if(resource_check(user_need)):
     else:
         print("You have to pay: ",return_amount(total))
 else:
-    print("Sorry there is not enough water.")
+    print("Sorry there is not enough resource.")
 
 print()
 print("Resource Report: ")
 resource_report()
-
-
