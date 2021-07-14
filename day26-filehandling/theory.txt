@@ -1,0 +1,22 @@
+files and folders
+file are inside the folder
+
+file path:
+Absolute file path:
+    very root / (mac computer is mactos home and other computer is c drive). Below is details of the file path.
+    root folder                 /
+        work folder             /work
+            report.doc          /work/report.doc
+            project folder      /work/project
+                talk.ppt        /work/project/talk.ppt   - computer navigate using this file path. Absolute file path
+                                                           always starts from the root.
+
+
+relative path:
+        when we are working inside the project folder(working directory)
+        then we can use the relative path which is just ./Project/talk.ppt or just talk.ppt
+        ./ - means look in the current directory
+
+ ../  - going one step in the hierarchy to the parent folder.
+
+
