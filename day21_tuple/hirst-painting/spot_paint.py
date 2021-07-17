@@ -6,7 +6,6 @@ import colorgram
 import turtle as t
 import random
 
-
 def draw_dots(turt,row,col,colors):
     for i in range(0,row):
 
@@ -44,6 +43,6 @@ turt = t.Turtle()
 
 t.colormode(255)
 my_screen =t.Screen()
-draw_dots(turt,15,15,colors)
+draw_dots(turt,5,5,colors)
 my_screen.exitonclick()
 
