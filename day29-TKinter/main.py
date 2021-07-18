@@ -18,6 +18,8 @@ my_label.pack() # this will plave the label into the screen and its packed in th
 # 4. *args - unlimited arguments but in tuples
 my_label["text"] = "new text" # or
 my_label.config(text="new text")
+my_label.grid(column =1,row=1)
+my_label.config(padx=10,pady=10)
 
 def button_clicked():
     print("I am clicked")
@@ -25,14 +27,21 @@ def button_clicked():
 
 #### button
 button = tkinter.Button(text="Click Me",command =button_clicked) # from tkinter import *
-button.pack()
+button.grid(row=0,column=3)
 
-
+window.config(padx=10,pady=10) # it gives the padding you can also pad around the all the wdigets using
 #entry
 
 input = tkinter.Entry(width =10)
-input.pack()
-input.get() # returns input as string which has input from user
-
-
+#input.pack()
+input.grid(column=2, row=2)
+#input.get() # returns input as string which has input from user
+# pack , place and grid. Pack already have explained
+'''
+place - is all abour precise positioning.my_label.place(x =0,y=0) this code will place the label at 0,0 position
+'''
+'''
+Grid is really simple concept and its imagine that your entire window as grid.input.grid(column=2, row=2)
+'''
+#TODO you cant mix up with pack and grid. So you have to choose one of the other. According to Angela Grid is the useful widgets
 window.mainloop() # this mainloop will keeps the window open
