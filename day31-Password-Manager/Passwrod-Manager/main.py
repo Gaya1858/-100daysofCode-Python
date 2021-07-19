@@ -8,6 +8,26 @@ from tkinter import messagebox
 import random
 import pyperclip #Pyperclip is a cross-platform Python module for copy and paste clipboard functions.
 import json
+'''
+json - javascript object notation. 
+we use 3 methods that is json.dump()(to write),json.load()(to read) and json.update()(to update)
+the below is the dictionary formate that we stored datials 
+new_data={website:{
+        "email": user_email,
+        "password": user_password
+    }}
+if you want retrieve the values of the website name
+new_data[website]["email"]
+new_data[website]["password"]
+
+Adding into json file which is already exists
+you should update first and write it. Below is the code to append 
+with open("data.json","r") as f:
+    data =json.load(f)
+    data.update(new_data)
+    with open("data.json","w") as f:
+        json.dump(data,f,indent=4)
+'''
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gp_button():
