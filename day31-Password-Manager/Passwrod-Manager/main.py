@@ -7,6 +7,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip #Pyperclip is a cross-platform Python module for copy and paste clipboard functions.
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gp_button():
@@ -35,7 +36,10 @@ def add_entries():
     w_name=website_entry.get()
     user_email= email_entry.get()
     user_password =password_entry.get()
-    filename= "data.txt"
+    new_data={w_name:{
+        "email": user_email,
+        "password": user_password
+    }}
     add_done =Label(text="Your credentials added!",fg="blue") # i didnt show the message box, but you can
     '''Todo = when you add your credential, you can even show the popup window that shows that
         you have added the details with messagebox module.
@@ -49,12 +53,40 @@ def add_entries():
         messagebox.showinfo(title="Oops",message="You left something blank")
 
     else:
-        is_ok = messagebox.askokcancel(title="Wedsite",message=f"{w_name}, {user_email}, "
-                                                               f"{user_password}\n is it ok to save?\n")
-        if(is_ok):
-            with open(filename,"a") as f:
-                f.write(f"{w_name}, {user_email}, {user_password}\n")
-                add_done.grid(row=5,column =1)
+        try:
+            with open("data.json","r") as f:
+                data =json.load(f)
+        except FileNotFoundError:
+            with open("data.json","w") as f:
+                json.dump(new_data,f,indent=4)
+        else:
+            data.update(new_data)
+            with open("data.json","w") as f:
+                json.dump(data,f,indent=4)
+        finally:
+            website_entry.delete(0,END)
+            password_entry.delete(0,END)
+
+# ---------------------------- Search Setup ------------------------------- #
+def search_website():
+    website = website_entry.get()
+    try:
+        with open("data.json","r") as f:
+            data =json.load(f)
+
+    except FileNotFoundError:
+        messagebox.showinfo(title ="Error",message="File doesn't exist")
+    else:
+        if website in data:
+            email=data[website]["email"]
+            password=data[website]["password"]
+            messagebox.showinfo(title=website,message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title=website,message=f"No details for {website} exists")
+
+
+
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 '''window setup using Tk class'''
@@ -75,8 +107,10 @@ email_label.grid(row=2,column =0)# placing it into row 2 and column 0
 password_label =Label(text="Password:")# text for the password label
 password_label.grid(row=3,column =0)# placing it into row 3 and column 0
 '''Entry for he window'''
-website_entry =Entry(width =35) # width of the website entry
-website_entry.grid(row=1,column=1,columnspan=2)# grid placement
+website_entry =Entry(width =21) # width of the website entry
+website_entry.grid(row=1,column=1)# grid placement
+search_button = Button(text="Search",command =search_website,width =14)
+search_button.grid(row=1,column=2)
 website_entry.focus() # focus method keeps the curser at this entry box
 email_entry=Entry(width=35)
 email_entry.grid(row=2,column=1,columnspan=2) # columnspan stretches the entry to the specified number of columns
@@ -88,5 +122,6 @@ gp_button =Button(text="Generate Password",command=gp_button)
 gp_button.grid(row=3,column=2)
 add_button=Button(text="Add", width =36,command=add_entries)
 add_button.grid(row=4,column=1,columnspan=2)
+
 
 window.mainloop()
