@@ -1,0 +1,46 @@
+Application Programming Interfaces
+
+what are APIs?
+An API is a set of commands, functions, protocols and objects
+that programmers can use to create software pr interact with an external system.
+
+It is a barrier to your programme and the external system. Your program request some data from external system
+and the external system will response with data that you are requested if you followed all the procedures and
+rules that applies.
+if we want data from an external system then you need to know where exactly the data located
+it is called API endpoint (to ask for the location we API request)
+
+International Space station current API
+http://api.open-notify.org/iss-now.json
+{"message": "success", "timestamp": 1626807629, "iss_position": {"latitude": "27.8883", "longitude": "107.8612"}}
+
+
+example1:
+when you go to a restaurant the place gives you a menu which is an API between you and the kitchen
+you order some food and the kitchen will deliver.
+
+example2:
+going to the bank to check your account summary, you ask help from the bank teller. So the bank teller
+ is an interface to you and the bank.
+
+we are going to extract data from other websites using APIs today
+
+import requests
+
+response=requests.get(url="http://api.open-notify.org/iss-now.json")
+print(response) ###<Response [200]>  response code
+
+Response Code
+404 - the thing that you are looking for then the website will return 404
+1XX - Hold on something is happening it is not final
+2XX - all good
+3XX - Go away - you don't have permission here
+4XX - you screwed up . doesn't not exist
+5XX - server is down or it is screwed up
+
+https://httpstatuses.com for more response statuscode.
+
+There are so many status code and it will eb difficult to check the error/exceptions
+so python has requests module
+response.raise_for_status()
+
