@@ -1,6 +1,6 @@
 '''
 this class will create dictionary of trivia question and answers
-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
+
 '''
 import requests
 import json
