@@ -52,6 +52,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/day45-BeautifulSoup/dogBreed_webScarping/Cheese.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/day45-BeautifulSoup/dogBreed_webScarping/cheese.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
