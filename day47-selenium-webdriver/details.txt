@@ -1,0 +1,7 @@
+Selenium webdriver
+Advanced web scraping (automation and testing)
+allows us to automate the browser
+type, click, scroll you can do all these selenium driven tool
+also use - filling out form
+
+install:
