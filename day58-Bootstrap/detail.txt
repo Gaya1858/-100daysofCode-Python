@@ -1,0 +1,25 @@
+bootstrap - front end library(reusable). Website needs to be responsive. means it repsponds to the view
+ (like mobile, tablet and desktop).
+how to install bootstrap on our website
+CDN ---  content delivering network
+    instead of hosting your website in single location it will create many location to access the website
+    CDN has whole number routing points (user can access the website quickly)
+
+Wireframing:
+    First thing to do wireframing even creating your HTML structure
+    Opposite of this is, mockups
+    dribble.com --- for proto types and animation check this website
+    to create wireframe - use pencil and paper (sneakpeek.com for website sheet) or balsamiq cloud(30 days free trail)
+    try to design your website's layout and keep them to see it.
+
+bootstrap
+navbar To add a navigation bar
+navbar-brand  = to add navigation brand
+align = ml-auto (margin left)
+drop down menu of nav bar:
+    (hamburger menu)
+    download button(block)
+    add div add class - collapse navbar-collapse id from button block
+
+
+
