@@ -31,6 +31,6 @@ def diff_days(csv_contents: str) -> int:
 
 
 data =pd.read_csv("ex.csv")
-print(data['Date'].max())
+
 
 print(diff_days(data))
